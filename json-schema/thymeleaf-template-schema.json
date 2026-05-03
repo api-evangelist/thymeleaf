@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.thymeleaf.org/schema/template",
+  "title": "Thymeleaf Template Configuration",
+  "description": "JSON Schema describing the configuration of a Thymeleaf template engine setup, including dialects, resolvers, and template metadata",
+  "type": "object",
+  "properties": {
+    "engine": {
+      "$ref": "#/$defs/ThymeleafEngineConfig"
+    },
+    "templates": {
+      "type": "array",
+      "description": "Metadata about templates in this project",
+      "items": { "$ref": "#/$defs/ThymeleafTemplateMetadata" }
+    }
+  },
+  "$defs": {
+    "ThymeleafEngineConfig": {
+      "type": "object",
+      "description": "Configuration for a Thymeleaf TemplateEngine instance",
+      "properties": {
+        "dialects": {
+          "type": "array",
+          "description": "Dialects registered with the engine",
+          "items": { "$ref": "#/$defs/ThymeleafDialect" }
+        },
+        "templateResolvers": {
+          "type": "array",
+          "description": "Template resolvers in priority order",
+          "items": { "$ref": "#/$defs/ThymeleafTemplateResolver" }
+        },
+        "cacheEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether template caching is enabled; disable in development"
+        },
+        "cacheTTLMs": {
+          "type": "integer",
+          "description": "Cache time-to-live in milliseconds; null means infinite"
+        }
+      }
+    },
+    "ThymeleafDialect": {
+      "type": "object",
+      "description": "A Thymeleaf dialect extending the engine with custom processors",
+      "required": ["class"],
+      "properties": {
+        "class": {
+          "type": "string",
+          "description": "Fully qualified class name of the dialect",
+          "examples": [
+            "org.thymeleaf.standard.StandardDialect",
+            "org.thymeleaf.spring6.dialect.SpringStandardDialect",
+            "org.thymeleaf.extras.springsecurity6.dialect.SpringSecurityDialect"
+          ]
+        },
+        "prefix": {
+          "type": "string",
+          "description": "Attribute namespace prefix for this dialect",
+          "examples": ["th", "sec", "layout"]
+        },
+        "name": {
+          "type": "string",
+          "description": "Human-readable dialect name"
+        }
+      }
+    },
+    "ThymeleafTemplateResolver": {
+      "type": "object",
+      "description": "A template resolver configuration",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "ClassLoaderTemplateResolver",
+            "FileTemplateResolver",
+            "UrlTemplateResolver",
+            "StringTemplateResolver",
+            "SpringResourceTemplateResolver"
+          ]
+        },
+        "prefix": {
+          "type": "string",
+          "description": "Path prefix prepended to template names",
+          "examples": ["/templates/", "classpath:/templates/"]
+        },
+        "suffix": {
+          "type": "string",
+          "description": "File extension suffix appended to template names",
+          "examples": [".html", ".xml", ".txt"]
+        },
+        "templateMode": {
+          "type": "string",
+          "enum": ["HTML", "XML", "TEXT", "JAVASCRIPT", "CSS", "RAW"],
+          "default": "HTML"
+        },
+        "characterEncoding": {
+          "type": "string",
+          "default": "UTF-8"
+        },
+        "cacheable": {
+          "type": "boolean",
+          "default": true
+        },
+        "order": {
+          "type": "integer",
+          "description": "Resolution order priority; lower numbers are tried first"
+        }
+      }
+    },
+    "ThymeleafTemplateMetadata": {
+      "type": "object",
+      "description": "Metadata about a single Thymeleaf template file",
+      "required": ["name", "templateMode"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Template logical name (without prefix/suffix)"
+        },
+        "templateMode": {
+          "type": "string",
+          "enum": ["HTML", "XML", "TEXT", "JAVASCRIPT", "CSS", "RAW"]
+        },
+        "fragments": {
+          "type": "array",
+          "description": "Named fragments defined in this template",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "parameters": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": { "type": "string" },
+                    "required": { "type": "boolean" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "modelAttributes": {
+          "type": "array",
+          "description": "Model attributes this template expects to receive from the controller",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string", "description": "Model attribute name" },
+              "type": { "type": "string", "description": "Java type of the attribute" },
+              "required": { "type": "boolean", "default": true }
+            }
+          }
+        },
+        "description": { "type": "string" }
+      }
+    }
+  }
+}

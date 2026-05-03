@@ -1,0 +1,210 @@
+name: Thymeleaf Vocabulary
+description: >-
+  Normative vocabulary for Thymeleaf, covering the Standard Dialect, expression
+  syntax, template modes, Spring integration, attribute processors, and
+  extensibility concepts.
+version: 3.1.5.RELEASE
+created: '2026-05-03'
+modified: '2026-05-03'
+tags:
+  - HTML
+  - Java
+  - Open Source
+  - Server Side Rendering
+  - Spring
+  - Template Engine
+  - Thymeleaf
+
+categories:
+  - name: Template Modes
+    description: Supported template processing modes in Thymeleaf
+    terms:
+      - term: HTML
+        definition: The default template mode; produces HTML5 output; templates are valid HTML files displayable in browsers as natural templates
+        type: TemplateMode
+      - term: XML
+        definition: Strict XML template mode; validates template well-formedness; used for XML generation
+        type: TemplateMode
+      - term: TEXT
+        definition: Plain text template mode; no special HTML/XML processing; used for email text bodies or configuration files
+        type: TemplateMode
+      - term: JAVASCRIPT
+        definition: JavaScript template mode; allows Thymeleaf expressions within JavaScript code using a special comment syntax
+        type: TemplateMode
+      - term: CSS
+        definition: CSS template mode; allows Thymeleaf expressions within CSS stylesheets
+        type: TemplateMode
+      - term: RAW
+        definition: Raw template mode; no processing at all; used to include unprocessed external content
+        type: TemplateMode
+
+  - name: Standard Expression Syntax
+    description: Expression types in the Thymeleaf Standard Dialect
+    terms:
+      - term: Variable Expression
+        definition: "${...}" — evaluates Spring EL or OGNL expressions against the template model; e.g., ${user.name}
+        syntax: "${expression}"
+        type: Expression
+      - term: Selection Variable Expression
+        definition: "*{...}" — evaluates against the selected object (set by th:object); e.g., *{firstName}
+        syntax: "*{expression}"
+        type: Expression
+      - term: Message Expression
+        definition: "#{...}" — resolves internationalized messages from .properties files; e.g., #{header.title}"
+        syntax: "#{messageKey}"
+        type: Expression
+      - term: URL Expression
+        definition: "@{...}" — builds context-relative URLs with optional parameters; e.g., @{/order/{id}(id=${orderId})}"
+        syntax: "@{url(param=value)}"
+        type: Expression
+      - term: Fragment Expression
+        definition: "~{...}" — references template fragments defined with th:fragment; e.g., ~{footer :: copy})"
+        syntax: "~{template :: fragmentName}"
+        type: Expression
+
+  - name: Standard Dialect Attributes
+    description: The core th:* attribute processors in the Standard Dialect
+    terms:
+      - term: th:text
+        definition: Sets the text content of an element, escaping HTML entities; e.g., <span th:text="${user.name}">
+        type: AttributeProcessor
+      - term: th:utext
+        definition: Sets the unescaped text content of an element; allows raw HTML; use with caution
+        type: AttributeProcessor
+      - term: th:each
+        definition: Iterates over a collection, repeating the element for each item; e.g., <tr th:each="user : ${users}">
+        type: AttributeProcessor
+      - term: th:if
+        definition: Conditionally renders an element if the expression evaluates to true
+        type: AttributeProcessor
+      - term: th:unless
+        definition: Conditionally renders an element if the expression evaluates to false (inverse of th:if)
+        type: AttributeProcessor
+      - term: th:switch / th:case
+        definition: Switch-case conditional rendering; th:switch defines the selector, th:case defines each branch
+        type: AttributeProcessor
+      - term: th:href
+        definition: Sets the href attribute of anchor tags; supports URL expressions
+        type: AttributeProcessor
+      - term: th:src
+        definition: Sets the src attribute of img and script tags; supports URL expressions
+        type: AttributeProcessor
+      - term: th:action
+        definition: Sets the action attribute of form tags; supports URL expressions
+        type: AttributeProcessor
+      - term: th:object
+        definition: Selects an object as the context for *{...} selection expressions; used with form binding
+        type: AttributeProcessor
+      - term: th:field
+        definition: Binds an input field to a model property; generates id, name, and value attributes for form binding
+        type: AttributeProcessor
+      - term: th:fragment
+        definition: Defines a named template fragment that can be included by other templates
+        type: AttributeProcessor
+      - term: th:insert
+        definition: Inserts a fragment into the current element's body (replaces body content)
+        type: AttributeProcessor
+      - term: th:replace
+        definition: Replaces the current element entirely with the specified fragment
+        type: AttributeProcessor
+      - term: th:include
+        definition: Deprecated; includes only the fragment's content (not the fragment tag itself); prefer th:insert
+        type: AttributeProcessor
+      - term: th:attr
+        definition: Sets arbitrary element attributes from expressions; less preferred than specific th:* attributes
+        type: AttributeProcessor
+      - term: th:classappend
+        definition: Appends a CSS class to the element's class attribute conditionally
+        type: AttributeProcessor
+      - term: th:styleappend
+        definition: Appends inline style to the element's style attribute conditionally
+        type: AttributeProcessor
+      - term: th:remove
+        definition: Removes elements or their content from the output; useful for prototype-only markup
+        type: AttributeProcessor
+      - term: th:inline
+        definition: Enables inline expression processing within element content; modes are text, javascript, css, none
+        type: AttributeProcessor
+      - term: th:with
+        definition: Defines local variables available within the element's scope
+        type: AttributeProcessor
+      - term: th:block
+        definition: A synthetic host tag with no HTML representation; useful for grouping without adding HTML elements
+        type: AttributeProcessor
+
+  - name: Natural Templates
+    description: Thymeleaf's natural templating approach
+    terms:
+      - term: Natural Template
+        definition: A Thymeleaf template that is also valid HTML and can be opened directly in a browser as a prototype, with th:* attributes gracefully ignored by the browser
+        type: Concept
+      - term: Prototype-Only Attributes
+        definition: HTML attributes with default values used for browser preview that are overridden by Thymeleaf at runtime; e.g., src="..." th:src="@{...}"
+        type: Concept
+      - term: Static Prototype
+        definition: A Thymeleaf template in its browser-displayable form before server-side processing
+        type: Concept
+
+  - name: Spring Integration
+    description: Spring Framework and Spring Boot integration concepts
+    terms:
+      - term: SpringTemplateEngine
+        definition: The Thymeleaf template engine implementation for Spring, extending TemplateEngine with Spring-specific configuration
+        type: SpringClass
+      - term: SpringResourceTemplateResolver
+        definition: Template resolver that locates templates using Spring's resource loading mechanism; recommended for Spring Boot
+        type: SpringClass
+      - term: ThymeleafViewResolver
+        definition: Spring MVC ViewResolver implementation resolving views by name to Thymeleaf templates
+        type: SpringClass
+      - term: SpringStandardDialect
+        definition: A dialect that extends StandardDialect with Spring EL support for all ${...} and *{...} expressions
+        type: Dialect
+      - term: Spring EL
+        definition: Spring Expression Language; the expression evaluator used for ${...} and *{...} expressions in Spring-integrated Thymeleaf
+        type: Technology
+      - term: spring-boot-starter-thymeleaf
+        definition: Spring Boot auto-configuration starter that sets up Thymeleaf with sensible defaults; templates go in src/main/resources/templates/
+        type: Artifact
+        maven: "org.springframework.boot:spring-boot-starter-thymeleaf"
+
+  - name: Dialects
+    description: Thymeleaf dialect extension system
+    terms:
+      - term: Dialect
+        definition: A named set of processors and expression objects that can be added to a Thymeleaf template engine; enables extension and customization
+        type: ExtensionPoint
+      - term: StandardDialect
+        definition: The default Thymeleaf dialect providing all th:* standard attribute processors and expression objects
+        type: Dialect
+      - term: Spring Security Dialect
+        definition: Extra dialect (thymeleaf-extras-springsecurity) adding sec:* attributes for Spring Security integration; e.g., sec:authorize, sec:authentication
+        type: Dialect
+      - term: Layout Dialect
+        definition: Community dialect (nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect) for decorator-based page layout management
+        type: Dialect
+      - term: Java 8 Time Dialect
+        definition: Extra dialect (thymeleaf-extras-java8time) adding #temporals expression utility for Java 8 java.time types
+        type: Dialect
+
+  - name: Template Resolution
+    description: Concepts related to template loading and caching
+    terms:
+      - term: TemplateResolver
+        definition: Component responsible for locating and loading template resources by name
+        type: Component
+      - term: ClassLoaderTemplateResolver
+        definition: Resolves templates from the Java classpath
+        type: TemplateResolver
+      - term: FileTemplateResolver
+        definition: Resolves templates from the filesystem
+        type: TemplateResolver
+      - term: UrlTemplateResolver
+        definition: Resolves templates from a URL (including HTTP/HTTPS)
+        type: TemplateResolver
+      - term: StringTemplateResolver
+        definition: Resolves templates directly from in-memory strings; useful for testing
+        type: TemplateResolver
+      - term: Template Cache
+        definition: Thymeleaf caches parsed templates for performance; configurable time-to-live and maximum cache size
+        type: Concept

@@ -1,0 +1,82 @@
+{
+  "title": "Thymeleaf Template Structure",
+  "description": "Structural documentation for Thymeleaf template engine configuration and template metadata",
+  "version": "3.1.5.RELEASE",
+  "created": "2026-05-03",
+  "structures": [
+    {
+      "name": "ThymeleafEngineConfig",
+      "description": "Configuration for a Thymeleaf TemplateEngine instance",
+      "fields": [
+        { "name": "dialects", "type": "array<ThymeleafDialect>", "required": false, "description": "Dialects registered with the engine" },
+        { "name": "templateResolvers", "type": "array<ThymeleafTemplateResolver>", "required": false, "description": "Template resolvers in priority order" },
+        { "name": "cacheEnabled", "type": "boolean", "required": false, "default": true, "description": "Enable template cache; disable in development" },
+        { "name": "cacheTTLMs", "type": "integer", "required": false, "description": "Cache TTL in milliseconds" }
+      ]
+    },
+    {
+      "name": "ThymeleafDialect",
+      "description": "A Thymeleaf dialect providing attribute processors and expression utilities",
+      "fields": [
+        { "name": "class", "type": "string", "required": true, "description": "Fully qualified dialect class name" },
+        { "name": "prefix", "type": "string", "required": false, "description": "Attribute namespace prefix (e.g., 'th', 'sec', 'layout')" },
+        { "name": "name", "type": "string", "required": false, "description": "Human-readable dialect name" }
+      ],
+      "wellKnownDialects": [
+        { "name": "StandardDialect", "class": "org.thymeleaf.standard.StandardDialect", "prefix": "th" },
+        { "name": "SpringStandardDialect", "class": "org.thymeleaf.spring6.dialect.SpringStandardDialect", "prefix": "th" },
+        { "name": "SpringSecurityDialect", "class": "org.thymeleaf.extras.springsecurity6.dialect.SpringSecurityDialect", "prefix": "sec" },
+        { "name": "LayoutDialect", "class": "nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect", "prefix": "layout" }
+      ]
+    },
+    {
+      "name": "ThymeleafTemplateResolver",
+      "description": "Locates and loads template resources",
+      "fields": [
+        { "name": "type", "type": "string", "required": true, "description": "ClassLoaderTemplateResolver | FileTemplateResolver | UrlTemplateResolver | StringTemplateResolver | SpringResourceTemplateResolver" },
+        { "name": "prefix", "type": "string", "required": false, "description": "Path prefix for template names" },
+        { "name": "suffix", "type": "string", "required": false, "description": "File extension suffix, e.g. '.html'" },
+        { "name": "templateMode", "type": "string", "required": false, "default": "HTML", "description": "HTML | XML | TEXT | JAVASCRIPT | CSS | RAW" },
+        { "name": "characterEncoding", "type": "string", "required": false, "default": "UTF-8" },
+        { "name": "cacheable", "type": "boolean", "required": false, "default": true },
+        { "name": "order", "type": "integer", "required": false, "description": "Priority; lower = tried first" }
+      ]
+    },
+    {
+      "name": "ThymeleafExpressions",
+      "description": "The five Thymeleaf expression types",
+      "expressions": [
+        { "syntax": "${expression}", "name": "Variable Expression", "description": "Evaluates OGNL or Spring EL against the model", "example": "${user.name}" },
+        { "syntax": "*{expression}", "name": "Selection Expression", "description": "Evaluates against th:object selected object", "example": "*{firstName}" },
+        { "syntax": "#{messageKey}", "name": "Message Expression", "description": "Resolves i18n messages from .properties files", "example": "#{page.title}" },
+        { "syntax": "@{url(param=value)}", "name": "URL Expression", "description": "Builds context-relative URLs with parameters", "example": "@{/order/{id}(id=${orderId})}" },
+        { "syntax": "~{template :: fragment}", "name": "Fragment Expression", "description": "References a named template fragment", "example": "~{footer :: copy}" }
+      ]
+    },
+    {
+      "name": "StandardDialectAttributes",
+      "description": "Key th:* attribute processors in the Standard Dialect",
+      "attributes": [
+        { "name": "th:text", "description": "Sets escaped text content", "example": "<span th:text=\"${user.name}\">" },
+        { "name": "th:utext", "description": "Sets unescaped (raw HTML) text content" },
+        { "name": "th:each", "description": "Iterates over a collection", "example": "<tr th:each=\"user : ${users}\">" },
+        { "name": "th:if", "description": "Conditional rendering when true" },
+        { "name": "th:unless", "description": "Conditional rendering when false" },
+        { "name": "th:switch / th:case", "description": "Switch-case conditional block" },
+        { "name": "th:href", "description": "Sets href with URL expression", "example": "<a th:href=\"@{/users/{id}(id=${user.id})}\">" },
+        { "name": "th:src", "description": "Sets src with URL expression" },
+        { "name": "th:action", "description": "Sets form action with URL expression" },
+        { "name": "th:object", "description": "Selects object for *{...} expressions and form binding" },
+        { "name": "th:field", "description": "Binds form field to model property; generates id, name, value" },
+        { "name": "th:fragment", "description": "Defines a named fragment" },
+        { "name": "th:insert", "description": "Inserts fragment into element body" },
+        { "name": "th:replace", "description": "Replaces element with fragment" },
+        { "name": "th:with", "description": "Defines local variables" },
+        { "name": "th:remove", "description": "Removes element/content from output" },
+        { "name": "th:inline", "description": "Enables inline expressions; text | javascript | css | none" },
+        { "name": "th:block", "description": "Virtual host tag with no HTML output" },
+        { "name": "th:classappend", "description": "Appends CSS class conditionally" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "@context": {
+    "@vocab": "https://www.thymeleaf.org/vocab#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "th": "https://www.thymeleaf.org/vocab#",
+
+    "ThymeleafTemplate": {
+      "@id": "th:ThymeleafTemplate",
+      "rdfs:comment": "A Thymeleaf template file"
+    },
+    "ThymeleafDialect": {
+      "@id": "th:ThymeleafDialect",
+      "rdfs:comment": "A Thymeleaf dialect extending the template engine with processors"
+    },
+    "ThymeleafFragment": {
+      "@id": "th:ThymeleafFragment",
+      "rdfs:comment": "A reusable named fragment within a Thymeleaf template"
+    },
+    "ThymeleafExpression": {
+      "@id": "th:ThymeleafExpression",
+      "rdfs:comment": "A Thymeleaf expression for data binding or URL generation"
+    },
+    "TemplateMode": {
+      "@id": "th:TemplateMode",
+      "rdfs:comment": "The processing mode for a Thymeleaf template: HTML, XML, TEXT, JAVASCRIPT, CSS, or RAW"
+    },
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "version": "schema:version",
+    "created": "schema:dateCreated",
+    "modified": "schema:dateModified",
+
+    "templateMode": {
+      "@id": "th:templateMode",
+      "rdfs:comment": "The template mode (HTML, XML, TEXT, JAVASCRIPT, CSS, RAW)"
+    },
+    "prefix": {
+      "@id": "th:dialectPrefix",
+      "rdfs:comment": "The attribute namespace prefix for a dialect (e.g., 'th' for Standard Dialect)"
+    },
+    "processors": {
+      "@id": "th:hasProcessors",
+      "@container": "@list"
+    },
+    "fragments": {
+      "@id": "th:hasFragments",
+      "@container": "@list"
+    },
+    "fragmentName": {
+      "@id": "th:fragmentName",
+      "rdfs:comment": "The name of a th:fragment definition"
+    },
+    "expressionType": {
+      "@id": "th:expressionType",
+      "rdfs:comment": "The type of Thymeleaf expression: variable, selection, message, url, or fragment"
+    },
+    "dialect": {
+      "@id": "th:usesDialect",
+      "@type": "@id"
+    },
+    "templateResolver": {
+      "@id": "th:usesTemplateResolver",
+      "@type": "@id"
+    },
+
+    "HTML": "th:TemplateModeHTML",
+    "XML": "th:TemplateModeXML",
+    "TEXT": "th:TemplateModeTEXT",
+    "JAVASCRIPT": "th:TemplateModeJAVASCRIPT",
+    "CSS": "th:TemplateModeCSS",
+    "RAW": "th:TemplateModeRAW",
+
+    "StandardDialect": "th:DialectStandard",
+    "SpringStandardDialect": "th:DialectSpringStandard",
+    "SpringSecurityDialect": "th:DialectSpringSecurity",
+    "LayoutDialect": "th:DialectLayout",
+    "Java8TimeDialect": "th:DialectJava8Time",
+
+    "variableExpression": {
+      "@id": "th:variableExpression",
+      "rdfs:comment": "${...} — evaluates OGNL or Spring EL against the model"
+    },
+    "selectionExpression": {
+      "@id": "th:selectionExpression",
+      "rdfs:comment": "*{...} — evaluates against the selected object (th:object)"
+    },
+    "messageExpression": {
+      "@id": "th:messageExpression",
+      "rdfs:comment": "#{...} — resolves internationalized messages"
+    },
+    "urlExpression": {
+      "@id": "th:urlExpression",
+      "rdfs:comment": "@{...} — builds context-relative URLs"
+    },
+    "fragmentExpression": {
+      "@id": "th:fragmentExpression",
+      "rdfs:comment": "~{...} — references template fragments"
+    },
+
+    "mavenCoordinates": "schema:identifier",
+    "programmingLanguage": "schema:programmingLanguage",
+    "license": "schema:license",
+    "codeRepository": "schema:codeRepository",
+    "softwareVersion": "schema:softwareVersion",
+    "documentation": "schema:documentation",
+    "downloadUrl": "schema:downloadUrl"
+  }
+}

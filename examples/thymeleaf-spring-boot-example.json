@@ -1,0 +1,84 @@
+{
+  "title": "Thymeleaf Spring Boot Integration Example",
+  "description": "Example showing common Thymeleaf patterns with Spring Boot, including template configuration, expressions, fragments, and Spring Security integration",
+  "version": "3.1.5.RELEASE",
+  "springBootVersion": "3.4.x",
+  "mavenDependency": {
+    "groupId": "org.springframework.boot",
+    "artifactId": "spring-boot-starter-thymeleaf",
+    "description": "Auto-configures Thymeleaf with SpringResourceTemplateResolver and SpringTemplateEngine"
+  },
+  "engineConfiguration": {
+    "type": "ThymeleafEngineConfig",
+    "templateResolvers": [
+      {
+        "type": "SpringResourceTemplateResolver",
+        "prefix": "classpath:/templates/",
+        "suffix": ".html",
+        "templateMode": "HTML",
+        "characterEncoding": "UTF-8",
+        "cacheable": false
+      }
+    ],
+    "dialects": [
+      {
+        "class": "org.thymeleaf.spring6.dialect.SpringStandardDialect",
+        "prefix": "th",
+        "name": "Spring Standard Dialect"
+      },
+      {
+        "class": "org.thymeleaf.extras.springsecurity6.dialect.SpringSecurityDialect",
+        "prefix": "sec",
+        "name": "Spring Security Dialect"
+      }
+    ],
+    "cacheEnabled": false
+  },
+  "applicationProperties": {
+    "spring.thymeleaf.prefix": "classpath:/templates/",
+    "spring.thymeleaf.suffix": ".html",
+    "spring.thymeleaf.encoding": "UTF-8",
+    "spring.thymeleaf.cache": "false",
+    "spring.thymeleaf.mode": "HTML"
+  },
+  "templateExamples": [
+    {
+      "name": "layout",
+      "path": "templates/layout.html",
+      "description": "Base layout template defining header, nav, content slot, and footer",
+      "html": "<!DOCTYPE html>\n<html xmlns:th=\"http://www.thymeleaf.org\" xmlns:sec=\"http://www.thymeleaf.org/extras/spring-security\">\n<head>\n  <title th:text=\"#{page.title}\">Page Title</title>\n</head>\n<body>\n  <nav>\n    <a th:href=\"@{/}\" th:text=\"#{nav.home}\">Home</a>\n    <span sec:authorize=\"isAuthenticated()\" th:text=\"${#authentication.name}\">username</span>\n  </nav>\n  <main th:insert=\"~{::content}\"></main>\n  <footer th:replace=\"~{fragments/footer :: footer}\"></footer>\n</body>\n</html>"
+    },
+    {
+      "name": "userList",
+      "path": "templates/users/list.html",
+      "description": "User list page showing iteration, conditionals, and URL expressions",
+      "modelAttributes": [
+        { "name": "users", "type": "List<User>", "required": true },
+        { "name": "totalCount", "type": "long", "required": true }
+      ],
+      "html": "<!DOCTYPE html>\n<html xmlns:th=\"http://www.thymeleaf.org\">\n<body>\n  <h1>Users (<span th:text=\"${totalCount}\">0</span>)</h1>\n  <table>\n    <tr th:each=\"user, stat : ${users}\" th:classappend=\"${stat.odd} ? 'odd' : 'even'\">\n      <td th:text=\"${stat.index + 1}\">1</td>\n      <td th:text=\"${user.name}\">Name</td>\n      <td th:text=\"${user.email}\">email@example.com</td>\n      <td>\n        <a th:href=\"@{/users/{id}/edit(id=${user.id})}\" th:if=\"${user.active}\">Edit</a>\n        <span th:unless=\"${user.active}\" class=\"inactive\">Inactive</span>\n      </td>\n    </tr>\n    <tr th:remove=\"all\" class=\"prototype-only\">\n      <td>1</td><td>John Doe</td><td>john@example.com</td><td><a href=\"#\">Edit</a></td>\n    </tr>\n  </table>\n</body>\n</html>"
+    },
+    {
+      "name": "userForm",
+      "path": "templates/users/form.html",
+      "description": "User form demonstrating th:object, th:field form binding, and validation errors",
+      "modelAttributes": [
+        { "name": "userForm", "type": "UserForm", "required": true }
+      ],
+      "html": "<!DOCTYPE html>\n<html xmlns:th=\"http://www.thymeleaf.org\">\n<body>\n  <form th:action=\"@{/users/save}\" th:object=\"${userForm}\" method=\"post\">\n    <input type=\"hidden\" th:field=\"*{id}\" />\n    <div>\n      <label for=\"name\">Name</label>\n      <input type=\"text\" th:field=\"*{name}\" />\n      <span th:if=\"${#fields.hasErrors('name')}\" th:errors=\"*{name}\" class=\"error\">Name error</span>\n    </div>\n    <div>\n      <label for=\"email\">Email</label>\n      <input type=\"email\" th:field=\"*{email}\" />\n      <span th:if=\"${#fields.hasErrors('email')}\" th:errors=\"*{email}\" class=\"error\">Email error</span>\n    </div>\n    <div>\n      <label>Role</label>\n      <select th:field=\"*{role}\">\n        <option th:each=\"r : ${roles}\" th:value=\"${r.code}\" th:text=\"${r.label}\">Role</option>\n      </select>\n    </div>\n    <button type=\"submit\" th:text=\"#{button.save}\">Save</button>\n  </form>\n</body>\n</html>"
+    },
+    {
+      "name": "footer",
+      "path": "templates/fragments/footer.html",
+      "description": "Reusable footer fragment with parameterized content",
+      "html": "<!DOCTYPE html>\n<html xmlns:th=\"http://www.thymeleaf.org\">\n<body>\n  <footer th:fragment=\"footer\">\n    <p th:text=\"#{footer.copyright(${#dates.year(#dates.createNow())})\">Copyright 2026</p>\n    <nav>\n      <a th:href=\"@{/privacy}\" th:text=\"#{footer.privacy}\">Privacy Policy</a>\n      <a th:href=\"@{/terms}\" th:text=\"#{footer.terms}\">Terms of Service</a>\n    </nav>\n  </footer>\n</body>\n</html>"
+    }
+  ],
+  "expressionExamples": [
+    { "expression": "${user.name}", "type": "Variable", "description": "Access user.name from Spring MVC model" },
+    { "expression": "*{firstName}", "type": "Selection", "description": "Access firstName on th:object selected bean" },
+    { "expression": "#{welcome.message}", "type": "Message", "description": "Resolve i18n message from messages.properties" },
+    { "expression": "@{/users/{id}/edit(id=${user.id})}", "type": "URL", "description": "Build path /users/42/edit with path variable" },
+    { "expression": "~{fragments/footer :: footer}", "type": "Fragment", "description": "Reference footer fragment from fragments/footer.html" }
+  ]
+}
