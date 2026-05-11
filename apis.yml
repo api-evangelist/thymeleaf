@@ -130,6 +130,11 @@ common:
     url: https://raw.githubusercontent.com/api-evangelist/thymeleaf/refs/heads/main/json-ld/thymeleaf-context.jsonld
   - type: Vocabulary
     url: https://raw.githubusercontent.com/api-evangelist/thymeleaf/refs/heads/main/vocabulary/thymeleaf-vocabulary.yml
+  - type: Integrations
+    url: https://www.thymeleaf.org/ecosystem
+integrations:
+  - name: Thymeleaf
+  - name: example
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
