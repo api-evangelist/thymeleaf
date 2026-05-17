@@ -49,13 +49,13 @@ apis:
     properties:
       - type: Documentation
         url: https://www.thymeleaf.org/doc/tutorials/3.1/usingthymeleaf.html
-      - type: Getting Started
+      - type: GettingStarted
         url: https://www.thymeleaf.org/doc/tutorials/3.1/usingthymeleaf.html#a-first-taste-of-thymeleaf
       - type: GitHub
         url: https://github.com/thymeleaf/thymeleaf
       - type: Maven
         url: https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf
-      - type: Changelog
+      - type: ChangeLog
         url: https://github.com/thymeleaf/thymeleaf/releases
     version: 3.1.5.RELEASE
 
@@ -114,7 +114,7 @@ common:
     url: https://www.thymeleaf.org/
   - type: Documentation
     url: https://www.thymeleaf.org/doc/tutorials/3.1/usingthymeleaf.html
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/thymeleaf
   - type: Maven
     url: https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf
