@@ -11,7 +11,7 @@ description: >-
   Eclipse and IntelliJ IDEA, and an extensible dialect system. It is widely used
   in Spring Boot web applications as the standard server-side rendering solution.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - HTML
   - Java
