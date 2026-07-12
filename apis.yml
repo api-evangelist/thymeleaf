@@ -110,6 +110,8 @@ apis:
         url: https://ultraq.github.io/thymeleaf-layout-dialect/
 
 common:
+  - type: DomainSecurity
+    url: security/thymeleaf-domain-security.yml
   - type: Website
     url: https://www.thymeleaf.org/
   - type: Documentation
