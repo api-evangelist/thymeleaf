@@ -142,8 +142,6 @@ common:
     url: https://raw.githubusercontent.com/api-evangelist/thymeleaf/refs/heads/main/json-structure/thymeleaf-template-structure.json
   - type: JSONLDContext
     url: https://raw.githubusercontent.com/api-evangelist/thymeleaf/refs/heads/main/json-ld/thymeleaf-context.jsonld
-  - type: Vocabulary
-    url: https://raw.githubusercontent.com/api-evangelist/thymeleaf/refs/heads/main/vocabulary/thymeleaf-vocabulary.yml
   - type: Integrations
     url: https://www.thymeleaf.org/ecosystem
 integrations:
