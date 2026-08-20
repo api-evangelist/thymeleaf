@@ -27,6 +27,16 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/thymeleaf.
 tags:
   - HTML
   - Java
+  - Open-Source
+  - Server-Side Rendering
+  - Spring
+  - Spring Boot
+  - Template Engine
+  - Thymeleaf
+  - Web Development
+tags_raw:
+  - HTML
+  - Java
   - Open Source
   - Server Side Rendering
   - Spring
@@ -53,6 +63,12 @@ apis:
     humanURL: https://www.thymeleaf.org/
     baseURL: https://www.thymeleaf.org/
     tags:
+      - HTML
+      - Java
+      - Open-Source
+      - Template Engine
+      - Thymeleaf
+    tags_raw:
       - HTML
       - Java
       - Open Source
