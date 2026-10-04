@@ -12,15 +12,20 @@ description: >-
   in Spring Boot web applications as the standard server-side rendering solution.
 type: Index
 deliveryModel:
-  model: unknown
-  open_source: false
+  model: self-hosted
+  license: Apache-2.0
+  license_evidence:
+    repo: thymeleaf/thymeleaf
+    spdx: Apache-2.0
+    stars: 2985
+  open_source: true
   commercial: false
   callable_host: false
-  label: Delivery model not determined — needs a product licence on record
-  confidence: low
+  label: Self-hosted open source · you run it yourself
+  confidence: medium
   source:
-  - none
-  generated: '2026-08-28'
+  - repository-license
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -38,7 +43,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/thymeleaf.
 tags:
   - HTML
   - Java
-  - Open-Source
+  - Open Source
   - Server-Side Rendering
   - Spring
   - Spring Boot
@@ -55,6 +60,7 @@ tags_raw:
   - Template Engine
   - Thymeleaf
   - Web Development
+  - Open-Source
 url: >-
   https://raw.githubusercontent.com/api-evangelist/thymeleaf/refs/heads/main/apis.yml
 created: '2026-03-16'
@@ -72,11 +78,10 @@ apis:
       expressions, #{...} message expressions, @{...} URL expressions, and
       ~{...} fragment expressions.
     humanURL: https://www.thymeleaf.org/
-    baseURL: https://www.thymeleaf.org/
     tags:
       - HTML
       - Java
-      - Open-Source
+      - Open Source
       - Template Engine
       - Thymeleaf
     tags_raw:
@@ -85,6 +90,7 @@ apis:
       - Open Source
       - Template Engine
       - Thymeleaf
+      - Open-Source
     properties:
       - type: Documentation
         url: https://www.thymeleaf.org/doc/tutorials/3.1/usingthymeleaf.html
@@ -107,7 +113,6 @@ apis:
       resolver integration, Spring Security dialect, form binding support,
       internationalization with Spring MessageSource, and Spring Boot starter.
     humanURL: https://www.thymeleaf.org/doc/tutorials/3.1/thymeleafspring.html
-    baseURL: https://www.thymeleaf.org/
     tags:
       - Java
       - Spring
