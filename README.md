@@ -64,94 +64,135 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Thymeleaf is a modern server-side Java template engine for both web and standalone environments, capable of processing HTML, XML, JavaScript, CSS, and plain text. Its primary goal is to bring elegant natural templates to development workflows — HTML pages that can be correctly displayed in browsers as static prototypes while also working as dynamic server-side templates. With deep Spring Framework integration, Thymeleaf 3.1 is the standard view technology for Spring Boot web applications.
+Thymeleaf is a modern server-side Java template engine for both web and standalone environments, capable of processing HTML, XML, JavaScript, CSS, and plain text. Its primary goal is to bring elegant natural templates to development workflows — HTML pages that can be correctly displayed in browsers as static prototypes while also working as dynamic server-side templates. With over 3,000 GitHub stars, Thymeleaf 3.1 offers deep Spring Framework integration via the Spring Standard Dialect using Spring EL, extensive tool support for Eclipse and IntelliJ IDEA, and an extensible dialect system. It is widely used in Spring Boot web applications as the standard server-side rendering solution.
 
-- **Human URL:** [https://www.thymeleaf.org/](https://www.thymeleaf.org/)
-- **GitHub:** [https://github.com/thymeleaf](https://github.com/thymeleaf)
-- **Version:** 3.1.5.RELEASE
+**Areas:** HTML · Java · Open Source · Server-Side Rendering · Spring · Spring Boot · Template Engine · Thymeleaf · Web Development
 
-## Description
+## Thymeleaf on APIs.io
 
-Thymeleaf uses Spring EL for expression evaluation in Spring applications and provides a rich Standard Dialect with `th:*` attribute processors for text substitution, iteration, conditionals, URL generation, form binding, and fragment composition. The extensible dialect system enables integration with Spring Security (via `sec:*` attributes), page layouts, Java 8 time types, and custom processors.
+Everything profiled for Thymeleaf is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/thymeleaf/](https://apis.io/providers/thymeleaf/)** — or go straight to one of the APIs or properties below.
 
-## Links
+### APIs (3)
 
+- [Thymeleaf Core](https://apis.io/apis/thymeleaf/thymeleaf-core/) — The core Thymeleaf template engine library providing HTML, XML, TEXT, JavaScript, and CSS template mode processing. Includes the Standard Dialect with…
+- [Thymeleaf Spring Integration](https://apis.io/apis/thymeleaf/thymeleaf-spring-integration/) — The Thymeleaf Spring integration module (thymeleaf-spring6) providing deep integration with Spring Framework including the SpringStandardDialect using…
+- [Thymeleaf Extras and Dialects](https://apis.io/apis/thymeleaf/thymeleaf-extras/) — Additional Thymeleaf dialect extensions including the Java 8 Time dialect for date/time formatting, the Spring Security dialect for security tag support,…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### JSON Schema (1)
+
+The data models the API reads and writes.
+
+- [Thymeleaf Template Configuration](https://apis.io/schemas/thymeleaf/thymeleaf-template/)
+
+#### JSON Structure (1)
+
+Data models expressed in JSON Structure.
+
+- [Thymeleaf Template Structure](https://apis.io/json-structure/thymeleaf/thymeleaf-template-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Thymeleaf Context](https://apis.io/jsonld/thymeleaf/thymeleaf-context/)
+
+#### Examples (1)
+
+Example requests and responses.
+
+- [Thymeleaf Spring Boot Example](https://apis.io/examples/thymeleaf/thymeleaf-spring-boot-example/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Thymeleaf — jsonschema rules](https://apis.io/rules/thymeleaf/thymeleaf-jsonschema-spectral-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Thymeleaf Domain Security](https://apis.io/security/thymeleaf/thymeleaf-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Thymeleaf Plans Pricing](https://apis.io/plans/thymeleaf/thymeleaf-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Thymeleaf Rate Limits](https://apis.io/rate-limits/thymeleaf/thymeleaf-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Thymeleaf Finops](https://apis.io/finops/thymeleaf/thymeleaf-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.thymeleaf.org/)
 - [Documentation](https://www.thymeleaf.org/doc/tutorials/3.1/usingthymeleaf.html)
-- [Spring Integration Tutorial](https://www.thymeleaf.org/doc/tutorials/3.1/thymeleafspring.html)
-- [GitHub Core](https://github.com/thymeleaf/thymeleaf)
-- [GitHub Spring](https://github.com/thymeleaf/thymeleaf-spring)
-- [Spring Security Extras](https://github.com/thymeleaf/thymeleaf-extras-springsecurity)
-- [Issue Tracker](https://github.com/thymeleaf/thymeleaf/issues)
-- [Maven](https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf)
-- [Spring Boot Starter](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf)
+- [GitHub](https://github.com/thymeleaf)
 
-## APIs / Modules
+## API Evangelist rating
 
-| Module | Description |
-|--------|-------------|
-| Thymeleaf Core | Core template engine supporting HTML, XML, TEXT, JavaScript, and CSS template modes |
-| Thymeleaf Spring Integration | SpringStandardDialect, SpringTemplateEngine, ThymeleafViewResolver, Spring MVC integration |
-| Thymeleaf Extras and Dialects | Spring Security dialect, Java 8 Time dialect, Layout Dialect |
+**Kin Score 19.7** — emerging · rubric 0.24.0 · scored 2026-10-17
 
-## Maven Quick Start
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 14.7 |
+| Contract governance | 9.8 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 7.9 |
 
-```xml
-<!-- Spring Boot (recommended) -->
-<dependency>
-  <groupId>org.springframework.boot</groupId>
-  <artifactId>spring-boot-starter-thymeleaf</artifactId>
-</dependency>
+**Agent readiness 0.6** — human-only
 
-<!-- Standalone Spring 6 -->
-<dependency>
-  <groupId>org.thymeleaf</groupId>
-  <artifactId>thymeleaf-spring6</artifactId>
-  <version>3.1.5.RELEASE</version>
-</dependency>
-```
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-## Expression Syntax
+**Regulatory alignment 10.8** — Horizontal (data, software, accessibility, platform)
 
-| Expression | Syntax | Example |
-|------------|--------|---------|
-| Variable | `${...}` | `${user.name}` |
-| Selection | `*{...}` | `*{firstName}` |
-| Message | `#{...}` | `#{page.title}` |
-| URL | `@{...}` | `@{/users/{id}(id=${user.id})}` |
-| Fragment | `~{...}` | `~{footer :: copy}` |
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/thymeleaf/](https://apis.io/providers/thymeleaf/).
 
-## Artifacts
+## How this profile is made
 
-### JSON Schema
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-| File | Description |
-|------|-------------|
-| [thymeleaf-template-schema.json](json-schema/thymeleaf-template-schema.json) | JSON Schema for Thymeleaf engine configuration, dialects, template resolvers, and template metadata |
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Thymeleaf: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### JSON Structure
+## Open an issue
 
-| File | Description |
-|------|-------------|
-| [thymeleaf-template-structure.json](json-structure/thymeleaf-template-structure.json) | Structural documentation for Thymeleaf configuration models, Standard Dialect attributes, and expression types |
-
-### JSON-LD Context
-
-| File | Description |
-|------|-------------|
-| [thymeleaf-context.jsonld](json-ld/thymeleaf-context.jsonld) | JSON-LD context mapping Thymeleaf vocabulary to linked data semantics |
-
-### Examples
-
-| File | Description |
-|------|-------------|
-| [thymeleaf-spring-boot-example.json](examples/thymeleaf-spring-boot-example.json) | Complete Spring Boot integration example with template configuration, form binding, fragment composition, and Spring Security dialect usage |
-
-### Vocabulary
-
-| File | Description |
-|------|-------------|
-| [thymeleaf-vocabulary.yml](vocabulary/thymeleaf-vocabulary.yml) | Normative vocabulary covering template modes, Standard Dialect attributes, expression types, Spring integration, dialects, and template resolution |
-
-## Tags
-
-HTML, Java, Open Source, Server Side Rendering, Spring, Spring Boot, Template Engine, Thymeleaf, Web Development
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/thymeleaf/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
